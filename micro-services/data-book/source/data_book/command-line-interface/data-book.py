@@ -1,5 +1,4 @@
 
-
 from argparse import ArgumentParser
 from data_book.api import import_data_book
 
@@ -15,7 +14,7 @@ def main():
     parser.add_argument("-i", "--import", default="fasttext", help="Where to import the data book from.")
     parser.add_argument("-o", "--output-path", default="dataset.csv", help="The path to save selected frames.")
     parser.add_argument("-v", "--verbose", default=False, action="store_true", help="Print out debug messages.")
-    parser.add_argument("--verbose_info", default=False, action="store_true", help="Print out info messages.")
+    parser.add_argument("--verbose-info", default=False, action="store_true", help="Print out info messages.")
 
     arguments = vars(parser.parse_args())
 
@@ -42,9 +41,6 @@ def setup_logging(arguments):
         root_logger.setLevel(logging.INFO)
     else:
         root_logger.setLevel(logging.WARNING)
-
-    logging.getLogger("gtts.tts").setLevel(logging.CRITICAL)
-    logging.getLogger("gtts.lang").setLevel(logging.CRITICAL)
 
 if __name__ == "__main__":
     main()

@@ -1,7 +1,7 @@
 
-# Cloud HAL
+# Task Manager
 
-Hardware abstraction layer for cloud platforms
+
 
 # Supported platforms
 

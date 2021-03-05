@@ -1,7 +1,8 @@
 
 # Forced Alignment
 
-Deep learning models trained on speech data.
+Force alignment of long speech and text data into shorter segments that match
+with high confidence.
 
 # Usage
 

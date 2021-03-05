@@ -7,3 +7,7 @@ Exports datasets as tar archives.
 
 peoples-speech data-export dataset dataset.tar.gz
 
+# Perf Requirements
+
+100k hours of data exported in 1 day
+

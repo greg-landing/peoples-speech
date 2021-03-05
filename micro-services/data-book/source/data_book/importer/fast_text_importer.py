@@ -16,6 +16,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+logging.getLogger("gtts.tts").setLevel(logging.CRITICAL)
+logging.getLogger("gtts.lang").setLevel(logging.CRITICAL)
+
 class FastTextImporter:
     def __init__(self, config):
         self.config = config
@@ -97,8 +100,8 @@ class FastTextImporter:
     def write_data_book_pages(self, words_and_audio):
         with open(self.config["output_path"], "w", newline="") as output_file:
             writer = csv.writer(output_file, delimiter=',', quotechar='"')
-            for word, audio_path in words_and_audio:
-                writer.writerow([word, audio_path])
+            for item in words_and_audio:
+                writer.writerow(item)
 
 def load_vectors(fname, max_word_count):
     fin = open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
