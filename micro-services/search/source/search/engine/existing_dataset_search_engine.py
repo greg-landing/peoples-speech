@@ -3,6 +3,7 @@ import hashlib
 import csv
 import tempfile
 import json
+import os
 import whoosh.index
 import whoosh.fields
 import whoosh.qparser
@@ -35,7 +36,7 @@ class ExistingDatasetSearchEngine:
         logger.debug("Searching for page: " + str(data_book_page))
 
         # figure out how many results per databook page
-        results_per_data_book_page = int(self.config["samples_per_page"])
+        results_per_data_book_page = int(self.config["search"]["samples_per_page"])
 
         label = data_book_page[0]
 
@@ -63,13 +64,27 @@ class ExistingDatasetSearchEngine:
             with open(dataset_path) as csv_file:
                 reader = csv.reader(csv_file, delimiter=',', quotechar='"')
                 for item in reader:
-                    label, path = item[0], item[1]
+                    label, path = check_paths(dataset_path, item[0], item[1])
                     writer.add_document(label=label, path=path)
 
         writer.commit()
 
     def get_dataset_paths(self):
-        return [self.config["dataset_path"]]
+        if self.config["search"]["dataset_paths"] == "test":
+            return [test_dataset_path()]
+
+        return [self.config["search"]["dataset_paths"]]
+
+def test_dataset_path():
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), "test", "test-dataset.csv")
+
+def check_paths(dataset_path, label, path):
+    if not os.path.isabs(path):
+        path = os.path.join(os.path.dirname(dataset_path), path)
+
+    assert os.path.exists(path),  "Path does not exist: " + path
+
+    return label, path
 
 def dedup(results_for_this_page, result_set):
     deduped_results = []

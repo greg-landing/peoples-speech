@@ -10,7 +10,7 @@ def main():
     parser = ArgumentParser("Data book API exposed as a command line utility.")
 
     parser.add_argument("-c", "--max-word-count", default=1e9, help="How many words to add to import to the data book.")
-    parser.add_argument("-l", "--language", default="dataset", help="The path to save selected frames.")
+    parser.add_argument("-l", "--language", default="dataset", help="The name of the language to import.")
     parser.add_argument("-i", "--import", default="fasttext", help="Where to import the data book from.")
     parser.add_argument("-o", "--output-path", default="dataset.csv", help="The path to save selected frames.")
     parser.add_argument("-v", "--verbose", default=False, action="store_true", help="Print out debug messages.")

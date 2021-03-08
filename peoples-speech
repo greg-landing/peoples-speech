@@ -37,7 +37,10 @@ PYTHONPATH="$LOCAL_DIRECTORY/micro-services/cloud-hal/source"
 PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/data-book/source"
 PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/peoples-speech/source"
 PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/task-manager/source"
+PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/ingestion/source"
+PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/quality/source"
 PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/data-export/source"
+PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/forced-alignment/source"
 PYTHONPATH+=":$LOCAL_DIRECTORY/micro-services/search/source"
 export PYTHONPATH
 
